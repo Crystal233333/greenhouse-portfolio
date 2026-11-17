@@ -1,0 +1,16 @@
+﻿# 临时文件 / 其它代理留下的验证产物
+_girl.html
+_girlshot.mjs
+_gp/
+.stats/
+.taste-skill/
+_*.mjs
+_*.py
+node_modules/
+.DS_Store
+Thumbs.db
+
+_archive/
+
+_*.png
+_gp*/

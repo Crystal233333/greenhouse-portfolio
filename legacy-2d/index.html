@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>作品集</title>
+<!-- 页面名称待填写：如需修改浏览器标签标题，直接改上面的 <title> 文本。 -->
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="page">
+  <!-- 背景：原图虚化光晕，用来承接留白 -->
+  <div class="bleed" aria-hidden="true"></div>
+  <!-- 星空粒子层 -->
+  <canvas class="sky" id="sky" aria-hidden="true"></canvas>
+
+  <main class="stage">
+    <div class="float">
+      <div class="tilt" id="tilt">
+        <!-- frame 的尺寸等于图片实际显示区域，热点以百分比挂在它上面 -->
+        <figure class="frame" id="frame">
+          <!-- scene.png 由 reference.png 复制而来（原图未改动），
+               只把左上角烘焙的“01”编号用调和填充抹平，其余像素保持一致。 -->
+          <img class="art" src="scene.png" width="729" height="724"
+               alt="星空中的玻璃花房浮岛：拱形玻璃温室、木质柜台、紫色花藤、暖色灯光与岩石浮岛，右侧悬挂一面圆形花形招牌。"
+               decoding="async" fetchpriority="high" draggable="false">
+
+          <!-- 暖光呼吸层 -->
+          <div class="glow glow-lamp" aria-hidden="true"></div>
+          <div class="glow glow-dome" aria-hidden="true"></div>
+          <div class="glow glow-shelf" aria-hidden="true"></div>
+
+          <!-- 热点由 app.js 依据 works.js 生成 -->
+          <div class="hotspots" id="hotspots"></div>
+        </figure>
+      </div>
+    </div>
+  </main>
+
+  <p class="hint" id="hint">点击场景中的三处查看作品</p>
+
+  <!-- 桌面悬停提示 -->
+  <div class="tooltip" id="tooltip" aria-hidden="true" hidden>
+    <span class="tooltip-name" id="tooltip-name"></span>
+    <span class="tooltip-state" id="tooltip-state"></span>
+  </div>
+
+  <!-- 轻提示（未配置网址时的点击反馈） -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- 手机点击后的作品卡片 -->
+  <div class="sheet" id="sheet" hidden>
+    <div class="sheet-backdrop" data-close></div>
+    <section class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+      <button class="sheet-close" id="sheet-close" type="button" aria-label="关闭" data-close>&times;</button>
+      <p class="sheet-kicker" id="sheet-kicker">作品</p>
+      <h2 class="sheet-title" id="sheet-title"></h2>
+      <p class="sheet-summary" id="sheet-summary"></p>
+      <a class="sheet-action" id="sheet-link" target="_blank" rel="noopener noreferrer" hidden>进入作品</a>
+      <span class="sheet-action is-disabled" id="sheet-unset" aria-disabled="true" hidden>尚未配置网址</span>
+      <p class="sheet-note" id="sheet-note" hidden></p>
+    </section>
+  </div>
+</div>
+
+<noscript><p class="noscript">这个页面需要启用 JavaScript 才能使用作品热点。</p></noscript>
+
+<script src="works.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

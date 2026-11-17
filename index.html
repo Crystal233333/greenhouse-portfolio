@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-type="software">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="page-type" content="software">
+<meta name="site-kind" content="software">
+<meta name="description" content="走进星空中的玻璃花房，点亮吊灯、翻开书页、欣赏花朵，探索个人作品。">
+<meta name="theme-color" content="#05070f">
+<title>花房 · 作品集</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- 3D 画布 -->
+<main id="scene-stage" data-visual aria-label="交互式花房场景">
+  <canvas id="scene" tabindex="0" aria-label="星空中的玻璃花房浮岛。向上滚动走近，向下滚动看全景。按 1 点灯，按 2 翻书，按 3 赏花，按 4 与小女孩打招呼。" aria-keyshortcuts="1 2 3 4"></canvas>
+</main>
+
+<!-- 顶栏 -->
+<header class="topbar">
+  <h1 class="brand"><span class="brand-dot" aria-hidden="true"></span>花房 · 作品集</h1>
+  <nav class="scene-controls" aria-label="声音控制">
+    <button type="button" class="sound-toggle" id="music-toggle" aria-pressed="false" aria-label="开启声音" title="开启声音">
+      <svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M11 5 6 9H3v6h3l5 4V5Z"/>
+        <g class="sound-waves"><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></g>
+        <path class="sound-muted" d="m16 9 6 6m0-6-6 6"/>
+      </svg>
+    </button>
+  </nav>
+</header>
+
+<!-- 滚动进度 -->
+<div class="progress" aria-hidden="true"><i id="progress-fill"></i></div>
+
+<!-- 滚动占位，真正的滚动高度由它提供 -->
+<div class="scroll-space" id="scroll-space"></div>
+
+<!-- 内容面板 -->
+<section class="panel" id="panel" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="panel-title">
+  <div class="panel-head">
+    <span class="panel-no" id="panel-no">01</span>
+    <button class="panel-close" id="panel-close" aria-label="关闭">&times;</button>
+  </div>
+  <p class="panel-kicker" id="panel-kicker">吊灯</p>
+  <h2 class="panel-title" id="panel-title"></h2>
+
+  <!-- 占位状态：打字线 -->
+  <div class="typing" id="typing" hidden>
+    <span class="typing-line" id="typing-line"></span>
+    <span class="typing-caret"></span>
+  </div>
+
+  <p class="panel-summary" id="panel-summary"></p>
+  <ul class="panel-tags" id="panel-tags"></ul>
+
+  <div class="panel-actions">
+    <a class="btn btn-primary" id="panel-link" target="_blank" rel="noopener noreferrer" hidden>进入作品</a>
+    <span class="btn is-disabled" id="panel-unset" hidden>尚未配置</span>
+    <button class="btn btn-ghost" id="panel-back" type="button">返回场景</button>
+  </div>
+  <p class="panel-note" id="panel-note" hidden></p>
+</section>
+<div class="panel-scrim" id="panel-scrim" hidden></div>
+
+<!-- 轻提示 -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- 加载 / 降级 -->
+<div class="boot" id="boot">
+  <div class="boot-inner">
+    <p class="boot-title">花房</p>
+    <p class="boot-text" id="boot-text">正在点亮星空…</p>
+  </div>
+</div>
+
+<div class="entry" id="entry" role="dialog" aria-modal="true" aria-labelledby="entry-title">
+  <div class="entry-mist entry-mist-left" aria-hidden="true"></div>
+  <div class="entry-mist entry-mist-right" aria-hidden="true"></div>
+  <div class="entry-copy">
+    <p id="entry-title">花房</p>
+    <button id="enter-world" type="button" disabled>星空准备中…</button>
+  </div>
+</div>
+
+<div class="fallback" id="fallback" hidden>
+  <img data-src="scene.png" alt="星空中的玻璃花房浮岛" class="fallback-img" width="729" height="724">
+  <div class="fallback-body">
+    <h1>花房 · 作品集</h1>
+    <p id="fallback-text">当前浏览器没有开启 WebGL，这里用静态图代替 3D 场景。</p>
+    <ul class="fallback-list" id="fallback-list"></ul>
+  </div>
+</div>
+
+<noscript><p class="noscript">需要启用 JavaScript 才能查看这个 3D 场景。</p></noscript>
+
+<script src="js/vendor/three.min.js"></script>
+<script src="js/vendor/GLTFLoader.js"></script>
+<script src="projects.js"></script>
+<script src="music-config.js"></script>
+<script src="js/assets.js"></script>
+<script src="js/textures.js"></script>
+<script src="js/craft.js"></script>
+<script src="js/girl.js"></script>
+<script src="js/sky.js"></script>
+<script src="js/camera-rig.js"></script>
+<script src="js/enchanted-props.js"></script>
+<script src="js/music.js"></script>
+<script src="js/cozy-nook.js"></script>
+<script src="js/world.js"></script>
+<script src="js/hover-glow.js"></script>
+<script src="js/interactions.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
